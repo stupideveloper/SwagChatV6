@@ -80,6 +80,7 @@ const Home = () => {
           <Form className='block'>
             <label className='block'>
               <span className='font-bold block mb-2'>Email</span>
+              <span>(This will be used to automatically generate your username)</span>
               <div className='block'>
                 <Field type="email" placeholder="joe@whitehouse.gov" name="email" className="rounded-lg w-72" />
               </div>
