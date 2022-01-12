@@ -6,12 +6,12 @@ import { BsTrashFill } from 'react-icons/bs'
 import Spinner from './Spinner'
 import ProfilePicture from './ProfilePicture'
 import getShortname from '../lib/GetShortname'
-const Message = ({ message, key }) => {
+const Message = ({ message , ...props}) => {
   const { user, userRoles } = useContext(UserContext)
   const [isDeleting, setIsDeleting] = useState(false)
 
   return (
-    <div className="py-1 flex items-center space-x-2" key={key}>
+    <div className="py-1 flex items-center space-x-2" key={props.key}>
       <ProfilePicture username={message.author.username} size={50} className={'rounded-xl'} />
       <div>
         <div>

@@ -79,9 +79,9 @@ const Home = () => {
         {({ isSubmitting }) => (
           <Form className='block'>
             <label className='block'>
-              <span className='font-bold block mb-2'>Email</span>
-              <span>(This will be used to automatically generate your username)</span>
-              <div className='block'>
+              <span className='font-bold block '>Email</span>
+              <span className=' text-sm text-slate-600 leading-3'>(This will be used to automatically generate your username)</span>
+              <div className='block pt-1'>
                 <Field type="email" placeholder="joe@whitehouse.gov" name="email" className="rounded-lg w-72" />
               </div>
               <ErrorMessage name="email" component="div" className='text-red-600' />

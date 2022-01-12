@@ -16,8 +16,6 @@ export default function Layout(props) {
   function toggleNewChannelOpen() {
     setIsNewChannelOpen(!isNewChannelOpen)
   }
-
-
   return (
     <main className="main flex h-screen w-screen overflow-hidden">
       {/* Sidebar */}
@@ -41,7 +39,7 @@ export default function Layout(props) {
           >
             <BsPlusCircle className='translate-y-[1px]' /> New Channel
           </button>
-          <NewChannelModal isOpen={isNewChannelOpen} toggleOpen={toggleNewChannelOpen} user={user} />
+          <NewChannelModal isOpen={isNewChannelOpen} toggleOpen={toggleNewChannelOpen} channels={props.channels} user={user} />
 
           <ul className="channel-list flex gap-y-1 flex-col">
             {props.channels.map((x) => (

@@ -2,12 +2,13 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import { addChannel } from '../lib/Store'
 import { useRouter } from 'next/router'
+import toast from 'react-hot-toast'
 
 import ButtonSolid from './Buttons/ButtonSolid'
-import { PencilIcon } from '@heroicons/react/outline'
+import { PencilIcon, ExclamationCircleIcon } from '@heroicons/react/outline'
 import ButtonGhost from './Buttons/ButtonGhost'
 
-export default function NewChannelModal({ isOpen, toggleOpen, user, ...props}) {
+export default function NewChannelModal({ isOpen, toggleOpen, user, channels, ...props}) {
 	const router = useRouter()
 	const slugify = (text) => {
     return text
@@ -25,8 +26,13 @@ export default function NewChannelModal({ isOpen, toggleOpen, user, ...props}) {
 		const data = new FormData(e.target);
 
 		const value = data.get('channelname');
-	
-		const newChannel = await addChannel(slugify(value), user.id)
+    const slug = slugify(value)
+
+    if(channels.some(code => code.slug === slug)) {
+      toast.error('Channel name already exists', { icon: <ExclamationCircleIcon className='w-5 h-5' /> })
+      return
+    }
+		const newChannel = await addChannel(slug, user.id)
 		router.replace(`/channels/${newChannel[0].id}`)
 		toggleOpen()
 	}

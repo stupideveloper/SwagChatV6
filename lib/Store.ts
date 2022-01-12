@@ -21,6 +21,7 @@ export const useStore = (props) => {
   const [newOrUpdatedUser, handleNewOrUpdatedUser] = useState(null)
   const [deletedChannel, handleDeletedChannel] = useState(null)
   const [deletedMessage, handleDeletedMessage] = useState(null)
+  const [messagesLoaded, setMessagesLoaded] = useState(false)
 
   // Load initial data and set up listeners
   useEffect(() => {
@@ -53,12 +54,16 @@ export const useStore = (props) => {
 
   // Update when the route changes
   useEffect(() => {
-    if (props?.channelId > 0) {
-      fetchMessages(props.channelId, (messages) => {
-        messages.forEach((x) => users.set(x.user_id, x.author))
-        setMessages(messages)
-      })
+    async function asyncLoad() {
+      if (props?.channelId > 0) {
+        await fetchMessages(props.channelId, (messages) => {
+          messages.forEach((x) => users.set(x.user_id, x.author))
+          setMessages(messages)
+        })
+        setMessagesLoaded(true)
+      }
     }
+    asyncLoad()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.channelId])
 
@@ -120,6 +125,7 @@ export const useStore = (props) => {
 
   return {
     // We can export computed values here to map the authors to each message
+    messagesLoaded: messagesLoaded,
     messages: messages.map((x) => ({ ...x, author: users.get(x.user_id) })),
     channels: channels !== null ? channels.sort((a, b) => a.slug.localeCompare(b.slug)) : [],
     users,
@@ -201,12 +207,13 @@ export const fetchMessages = async (channelId, setState) => {
  */
 export const addChannel = async (slug, user_id) => {
   try {
+    
     let { body } = await supabase.from('channels').insert([{ slug, created_by: user_id }])
     toast.success(`${slug} created`)
     return body
   } catch (error) {
     console.log('error', error)
-    toast.error(`Could not create ${slug}`)
+    toast.error(`Could not create ${slug} : ${error}`)
   }
 }
 

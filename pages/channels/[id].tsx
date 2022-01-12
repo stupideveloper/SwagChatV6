@@ -31,8 +31,7 @@ const ChannelsPage = (props) => {
 
   // Else load up the page
   const { id: channelId } = router.query
-  const { messages, channels } = useStore({ channelId })
-
+  const { messages, channels, messagesLoaded } = useStore({ channelId })
 
 
   useEffect(() => {
@@ -64,7 +63,7 @@ const ChannelsPage = (props) => {
           </div>
           <div className="Messages h-full pb-16">
             <div className={`p-2 flex flex-col gap-y-2 h-full ${messages.length === 0 ? 'overflow-y-hidden' : 'overflow-y-auto '}`}>
-              {messages.length === 0 && (
+              {!messagesLoaded && (
                 <div className='flex flex-col gap-y-2'>
                   {[...Array(skeletonN)].map((e, i) => <MessageSkeleton key={i} />)}
                 </div>
