@@ -82,7 +82,7 @@ const Home = () => {
               <span className='font-bold block '>Email</span>
               <span className=' text-sm text-slate-600 leading-3'>(This will be used to automatically generate your username)</span>
               <div className='block pt-1'>
-                <Field type="email" placeholder="joe@whitehouse.gov" name="email" className="rounded-lg w-72" />
+                <Field type="email" placeholder="joe@whitehouse.gov" name="email" className="rounded-lg w-full" />
               </div>
               <ErrorMessage name="email" component="div" className='text-red-600' />
             </label>
@@ -91,7 +91,7 @@ const Home = () => {
             <label className='inline'>
               <span className='font-bold block mb-2 mt-4'>Password</span>
               <div className='block'>
-                <Field type="password" placeholder="Minimum 8 characters" name="password" className="rounded-lg w-72" />
+                <Field type="password" placeholder="Minimum 8 characters" name="password" className="rounded-lg w-full" />
               </div>
               <ErrorMessage name="password" component="div" className='text-red-600' />
             </label>
@@ -101,7 +101,7 @@ const Home = () => {
               <label className='block'>
                 <span className='font-bold block mb-2 mt-4'>Confirm Password</span>
                 <div className='block'>
-                  <Field type="password" placeholder="Repeat the password" name="confirmPassword" className="rounded-lg w-72" />
+                  <Field type="password" placeholder="Repeat the password" name="confirmPassword" className="rounded-lg w-full" />
                 </div>
                 <ErrorMessage name="confirmPassword" component="div" className="text-red-600" />
               </label>

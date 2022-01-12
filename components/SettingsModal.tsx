@@ -131,7 +131,7 @@ export default function SettingsModal({isOpen, setIsOpen, ...props}) {
                 </Dialog.Title>
                 <div className="mt-2">
                   <div className=''>
-                    <h4>Profile Picture</h4>
+                    <h4 className='mb-2'>Profile Picture</h4>
                     <ProfilePicture size={50} />
 
                     <p className='text-slate-400 mb-2'>Yes we know its boring. To change it, sign up for a <a className='text-blue-600 underline' href="">Gravitar</a> account using the same email as SwagChatV6.</p>
