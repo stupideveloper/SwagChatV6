@@ -7,7 +7,7 @@ const MessageInput = ({ onSubmit }) => {
   const submitOnEnter = (event) => {
     // Watch for enter key
     if (event.keyCode === 13) {
-      if (event.target["value"] == "") return
+      if(event.target["value"] == "") return
       if(event.target["value"].length > 350) return
       onSubmit(messageText)
       setMessageText('')
