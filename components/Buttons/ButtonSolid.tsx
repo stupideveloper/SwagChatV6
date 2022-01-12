@@ -1,4 +1,4 @@
-export default function ButtonSolid({icon=null, children, ...props}) {
+export default function ButtonSolid({icon=null, children=null, ...props}) {
 	return (
 		<button
 		type="button"

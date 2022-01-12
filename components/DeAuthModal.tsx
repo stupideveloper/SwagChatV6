@@ -2,6 +2,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import ButtonSolid from './Buttons/ButtonSolid'
 import { HomeIcon } from '@heroicons/react/outline'
+import Link from 'next/link'
 
 export default function DeAuthModal({user, ...props}) {
   return (
@@ -54,7 +55,7 @@ export default function DeAuthModal({user, ...props}) {
                 </Dialog.Title>
                 <div className="mt-2">
 									<h4 className='mb-4'>Please re-authenticate</h4>
-									<a href="/"><ButtonSolid icon={<HomeIcon className="w-4 h-4" />}>Home</ButtonSolid></a>
+									<Link href="/" passHref><ButtonSolid icon={<HomeIcon className="w-4 h-4" />}>Home</ButtonSolid></Link>
                 </div>
 
                 

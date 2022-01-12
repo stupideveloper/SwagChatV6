@@ -4,7 +4,7 @@ import { useState } from 'react'
 const MessageInput = ({ onSubmit }) => {
   const [messageText, setMessageText] = useState('')
 
-  const submitOnEnter = (event: KeyboardEvent<HTMLInputElement>) => {
+  const submitOnEnter = (event) => {
     // Watch for enter key
     if (event.keyCode === 13) {
       if (event.target["value"] == "") return

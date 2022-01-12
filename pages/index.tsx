@@ -113,7 +113,7 @@ const Home = () => {
               <p className='mt-2'>Already have an account? <a href="#" onClick={()=>{setAuthMode('signIn')}} className='text-blue-800'>Sign In</a></p>
             )}
             {authMode === 'signIn' && (
-              <p className='mt-2'>Don't have an account? <a href="#" onClick={()=>{setAuthMode('signUp')}} className='text-blue-800'>Sign Up</a></p>
+              <p className='mt-2'>Don&apos;t have an account? <a href="#" onClick={()=>{setAuthMode('signUp')}} className='text-blue-800'>Sign Up</a></p>
             )}
             
               
